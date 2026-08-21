@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — WhichCraft</title>
+<meta name="description" content="Get in touch with WhichCraft with questions about membership or group painting travel retreats." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand"><span class="mark">🧶</span> WhichCraft</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="travel.html">Travel Retreats</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="membership.html" class="btn btn-outline">Join Now</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h1>We'd love to hear from you</h1>
+    <p class="lede">Questions about membership, travel retreats, or just want to say hello? Send us a note and we'll get back to you soon.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap hero-grid">
+    <form id="contact-form" class="form-card">
+      <div class="field">
+        <label for="c-name">Full name</label>
+        <input type="text" id="c-name" name="name" required />
+      </div>
+      <div class="field">
+        <label for="c-email">Email address</label>
+        <input type="email" id="c-email" name="email" required />
+      </div>
+      <div class="field">
+        <label for="c-topic">What's this about?</label>
+        <select id="c-topic" name="topic">
+          <option value="membership">Membership question</option>
+          <option value="travel">Travel retreat question</option>
+          <option value="billing">Billing / account help</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="c-message">Message</label>
+        <textarea id="c-message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+      <p id="contact-form-status" class="form-status" role="status"></p>
+      <div class="form-note">
+        This form needs a Formspree (or similar) endpoint added in <code>js/main.js</code> before it will deliver messages to an inbox — see the setup notes at the top of that file.
+      </div>
+    </form>
+
+    <div>
+      <h2>Other ways to reach us</h2>
+      <p><strong>Email:</strong> <a href="mailto:hello@whichcraft.example">hello@whichcraft.example</a></p>
+      <p><strong>Follow along:</strong> Instagram, Facebook &amp; Pinterest — links in the footer below.</p>
+      <p><strong>Local meetups:</strong> Let us know your city on the membership signup form and we'll loop you into any local get-togethers.</p>
+      <p style="margin-top:2em; color:#8a7b6e; font-size:0.85rem;"><em>[Client: replace the placeholder email above with your real business email or phone number.]</em></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:var(--cream);"><span class="mark">🧶</span> WhichCraft</a>
+        <p style="margin-top:14px; color:rgba(251,245,236,0.75); font-size:0.9rem;">A community connecting local crafters through live monthly sessions and unforgettable painting travel.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="travel.html">Travel Retreats</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="membership.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Along</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> WhichCraft. All rights reserved.</span>
+      <span>Made with care for makers everywhere.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('contact-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = document.getElementById('contact-form-status');
+    status.textContent = 'Thanks for reaching out — add a form endpoint in js/main.js to enable delivery.';
+    status.classList.add('show', 'ok');
+  });
+</script>
+</body>
+</html>
