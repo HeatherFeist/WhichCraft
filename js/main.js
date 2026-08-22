@@ -31,10 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
  *    replace FORM_ENDPOINT below with your form's URL. This is where
  *    signup details (name, email, plan, travel interest) get delivered
  *    to your inbox.
- * 2. Create three Stripe Payment Links (Products > Payment Links) in your
- *    Stripe account — one per membership tier — and paste each URL into
- *    the STRIPE_LINKS object below. Stripe handles all card payments,
- *    receipts, and recurring monthly billing automatically.
+ * 2. Create two Stripe Payment Links (Products > Payment Links) in your
+ *    Stripe account — one for Spark, one for Circle — and paste each URL
+ *    into the STRIPE_LINKS object below. Stripe handles all card payments,
+ *    receipts, and recurring monthly billing automatically. (The Studio
+ *    tier is invitation-only and isn't purchased/checked out — no link
+ *    needed for it.)
  * 3. That's it — when someone submits the form, their info is captured
  *    AND they're taken straight to secure checkout for the plan they chose.
  */
@@ -43,7 +45,6 @@ const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID';
 const STRIPE_LINKS = {
   spark: 'https://buy.stripe.com/REPLACE_WITH_SPARK_PAYMENT_LINK',
   circle: 'https://buy.stripe.com/REPLACE_WITH_CIRCLE_PAYMENT_LINK',
-  studio: 'https://buy.stripe.com/REPLACE_WITH_STUDIO_PAYMENT_LINK',
 };
 
 function initMembershipForm() {
@@ -125,6 +126,7 @@ document.addEventListener('DOMContentLoaded', initMembershipForm);
 const TRAVEL_FORM_ENDPOINT = FORM_ENDPOINT;
 const HOST_FORM_ENDPOINT = FORM_ENDPOINT;
 const SHOP_NOTIFY_ENDPOINT = FORM_ENDPOINT;
+const SPOTLIGHT_FORM_ENDPOINT = FORM_ENDPOINT;
 
 function initLeadForm({ formId, statusId, endpoint, sendingLabel, idleLabel, successMessage }) {
   const form = document.getElementById(formId);
@@ -189,5 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
     sendingLabel: 'Sending…',
     idleLabel: 'Notify Me',
     successMessage: "You're on the list! We'll email you the moment the shop opens.",
+  });
+
+  initLeadForm({
+    formId: 'spotlight-form',
+    statusId: 'spotlight-form-status',
+    endpoint: SPOTLIGHT_FORM_ENDPOINT,
+    sendingLabel: 'Submitting…',
+    idleLabel: 'Submit to Spotlight',
+    successMessage:
+      "Thanks! Your submission is in — we'll review it and let you know if it's shortlisted for a community vote.",
   });
 });

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spotlight — WhichCraft</title>
+<meta name="description" content="Circle members can submit their craft videos to WhichCraft Spotlight, get voted on by the community, and earn a spot on our livestream." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand"><span class="mark">🧶</span> WhichCraft</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="travel.html">Travel Retreats</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="spotlight.html">Spotlight</a></li>
+      <li><a href="host.html">Host a Party</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="membership.html" class="btn btn-outline">Join Now</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Spotlight</span>
+    <h1>Your craft, in front of our whole community</h1>
+    <p class="lede">Spotlight is how great crafters get discovered. Circle members can submit a video of their own craft or product, our community votes on the ones they'd love to see more of, and standout crafters get invited to demo live on our channel — with the best of the best eventually invited into The Studio.</p>
+    <a href="#submit" class="btn btn-primary" style="margin-top:1em;">Submit to Spotlight</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head center mx-auto">
+      <span class="eyebrow">How it works</span>
+      <h2>From submission to livestream</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Circle members submit</h3>
+        <p>Share a link to a video of your craft, product, or idea. Submitting is a perk of Circle membership.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>We shortlist</h3>
+        <p>Heather &amp; Linda review every submission and choose which ones go up for a community vote — not all submissions make the shortlist.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>The community votes</h3>
+        <p>Circle members vote on the shortlisted submissions to help us see what the community is most excited about.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Standouts get invited</h3>
+        <p>Popular vote, and the fit with our upcoming livestream calendar, both factor into who we invite to demo live — and repeat standouts may be invited into The Studio.</p>
+      </div>
+    </div>
+    <p class="center" style="margin-top:2em; color:#6b5d51; font-size:0.9rem;">A high vote count highlights community interest — it's one input into who gets invited, alongside production scheduling, not an automatic booking.</p>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head center mx-auto">
+      <span class="eyebrow">Why it's worth it</span>
+      <h2>What Spotlight can lead to</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">📣</div>
+        <h3>Real Audience Exposure</h3>
+        <p>Demo your craft live to our whole community — a built-in audience who's already there to see new ideas.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🛍️</div>
+        <h3>A Path to the Marketplace</h3>
+        <p>Crafts that resonate with our audience are exactly the kind of thing we look to feature or turn into a kit in our <a href="shop.html">Shop</a>.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏅</div>
+        <h3>A Path to The Studio</h3>
+        <p>Consistent standout performance in Spotlight is one of the clearest ways to earn an invitation to our top, invitation-only tier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="submit">
+  <div class="wrap">
+    <div class="section-head center mx-auto">
+      <span class="eyebrow">Submit</span>
+      <h2>Ready to share your craft?</h2>
+      <p class="lede mx-auto">Submitting is open to Circle members. Not a Circle member yet? <a href="membership.html">Join here</a> first, then come back and submit.</p>
+    </div>
+
+    <form id="spotlight-form" class="form-card" style="max-width:640px; margin:0 auto;">
+      <div class="field">
+        <label for="sp-name">Full name</label>
+        <input type="text" id="sp-name" name="name" required />
+      </div>
+      <div class="field">
+        <label for="sp-email">Email address</label>
+        <input type="email" id="sp-email" name="email" required />
+      </div>
+      <div class="field checkbox-row">
+        <input type="checkbox" id="sp-member" name="is_circle_member" value="yes" required />
+        <label for="sp-member">I'm a current Circle (or invited Studio) member</label>
+      </div>
+      <div class="field">
+        <label for="sp-craft">What craft or product are you submitting?</label>
+        <input type="text" id="sp-craft" name="craft_title" required />
+      </div>
+      <div class="field">
+        <label for="sp-link">Link to your video</label>
+        <input type="text" id="sp-link" name="video_link" placeholder="TikTok, Instagram Reel, or YouTube link" required />
+      </div>
+      <div class="field">
+        <label for="sp-notes">Tell us about it <span style="font-weight:400; color:#8a7b6e;">(optional)</span></label>
+        <textarea id="sp-notes" name="notes" placeholder="What makes it special, how long you've been making it, anything you'd want the community to know."></textarea>
+      </div>
+      <div class="field checkbox-row">
+        <input type="checkbox" id="sp-terms" name="terms" required />
+        <label for="sp-terms">I understand submission doesn't guarantee a shortlist spot, a vote, or a livestream invitation.</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Submit to Spotlight</button>
+      <p id="spotlight-form-status" class="form-status" role="status"></p>
+
+      <div class="form-note">
+        Submissions are reviewed by our team before anything goes up for a community vote.
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="section-alt" style="max-width:780px; margin:0 auto; padding-left:24px; padding-right:24px;">
+  <div class="section-head center mx-auto">
+    <span class="eyebrow">Questions</span>
+    <h2>Spotlight FAQ</h2>
+  </div>
+  <details class="faq-item" open>
+    <summary>Do I have to be a Circle member to submit?</summary>
+    <p>Yes — submitting to Spotlight is one of the perks of Circle membership. Spark members are welcome to upgrade anytime.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Will my submission definitely get voted on?</summary>
+    <p>Not automatically. Every submission is reviewed first, and only shortlisted ones go up for a community vote — this keeps Spotlight focused on projects that fit well.</p>
+  </details>
+  <details class="faq-item">
+    <summary>If I win the vote, am I guaranteed a livestream spot?</summary>
+    <p>The vote shows us what the community is most excited about, but final invitations also depend on our livestream production calendar. A strong vote is the best way to get noticed, though.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Can I submit more than once?</summary>
+    <p>Yes — feel free to submit a new craft or project each month.</p>
+  </details>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:var(--cream);"><span class="mark">🧶</span> WhichCraft</a>
+        <p style="margin-top:14px; color:rgba(251,245,236,0.75); font-size:0.9rem;">A community connecting local crafters through live monthly sessions and unforgettable painting travel.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="travel.html">Travel Retreats</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="spotlight.html">Spotlight</a></li>
+          <li><a href="host.html">Host a Party</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="membership.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Along</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> WhichCraft. All rights reserved.</span>
+      <span>Made with care for makers everywhere.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
