@@ -21,6 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // Footer year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Scroll-reveal: fade/lift in cards, plans, steps, etc. as they enter
+  // the viewport. Progressive enhancement only — everything is fully
+  // visible without JS (see the reduced-motion fallback in style.css).
+  const revealSelectors = [
+    '.card', '.plan', '.step', '.quote-card', '.dest-card', '.teacher-card',
+  ];
+  const revealEls = document.querySelectorAll(revealSelectors.join(','));
+  if ('IntersectionObserver' in window && revealEls.length) {
+    revealEls.forEach((el) => el.setAttribute('data-reveal', ''));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  }
 });
 
 /**
