@@ -49,21 +49,22 @@ document.addEventListener('DOMContentLoaded', () => {
 /**
  * Membership signup form handling.
  *
- * SETUP FOR THE CLIENT (no coding needed):
- * 1. Create a free form endpoint at https://formspree.io (or similar) and
- *    replace FORM_ENDPOINT below with your form's URL. This is where
- *    signup details (name, email, plan, travel interest) get delivered
- *    to your inbox.
- * 2. Create two Stripe Payment Links (Products > Payment Links) in your
- *    Stripe account — one for Spark, one for Circle — and paste each URL
- *    into the STRIPE_LINKS object below. Stripe handles all card payments,
- *    receipts, and recurring monthly billing automatically. (The Studio
- *    tier is invitation-only and isn't purchased/checked out — no link
- *    needed for it.)
- * 3. That's it — when someone submits the form, their info is captured
- *    AND they're taken straight to secure checkout for the plan they chose.
+ * Form delivery is powered by Web3Forms (web3forms.com) — every form on
+ * the site posts here with a hidden `access_key` field (see each form's
+ * HTML) tied to the client's inbox. No account/dashboard needed on their
+ * end; submissions just arrive as email.
+ *
+ * SETUP FOR THE CLIENT (no coding needed) — Stripe checkout:
+ * Create two Stripe Payment Links (Products > Payment Links) in your
+ * Stripe account — one for Spark, one for Circle — and paste each URL
+ * into the STRIPE_LINKS object below. Stripe handles all card payments,
+ * receipts, and recurring monthly billing automatically. (The Studio
+ * tier is invitation-only and isn't purchased/checked out — no link
+ * needed for it.) Once set, submitting the signup form captures the
+ * member's info AND takes them straight to secure checkout for the plan
+ * they chose.
  */
-const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID';
+const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
 
 const STRIPE_LINKS = {
   spark: 'https://buy.stripe.com/REPLACE_WITH_SPARK_PAYMENT_LINK',
@@ -93,15 +94,15 @@ function initMembershipForm() {
     submitBtn.setAttribute('aria-disabled', 'true');
     submitBtn.textContent = 'Submitting…';
 
-    const placeholder = FORM_ENDPOINT.includes('REPLACE_WITH');
-
     try {
-      if (!placeholder) {
-        await fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: data,
-        });
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok || result.success === false) {
+        throw new Error(result.message || 'Submission failed');
       }
 
       status.textContent =
@@ -133,23 +134,24 @@ document.addEventListener('DOMContentLoaded', initMembershipForm);
 /**
  * Simple lead-capture forms — travel interest, host applications, and
  * shop launch notifications all follow the same pattern: submit to
- * Formspree, show a success message, reset the form. Each currently
- * shares FORM_ENDPOINT; give any of them their own endpoint below if
- * you'd rather keep those inquiries in a separate inbox/folder.
+ * Web3Forms, show a success message, reset the form. Each currently
+ * shares FORM_ENDPOINT (and therefore the same inbox, distinguished by
+ * each form's hidden "subject" field); give any of them their own
+ * Web3Forms access key below if you'd rather route those inquiries to a
+ * separate inbox.
  *
  * NOTE ON SUPABASE: once the "Host a Party" program and marketplace are
  * ready for a real backend (tracking host applications/approvals, kit
  * inventory, member listings, and sales data to decide which kits stay
  * or get swapped out), these forms are the natural place to switch from
- * Formspree to writing directly into Supabase tables. That swap needs
- * your Supabase project URL and anon/public API key — once you have a
- * project created, share those and this file can be updated to submit
- * straight into Supabase instead of (or in addition to) Formspree.
+ * (or add alongside) Web3Forms to writing directly into Supabase tables
+ * — that's already scaffolded in supabase/migrations/.
  */
 const TRAVEL_FORM_ENDPOINT = FORM_ENDPOINT;
 const HOST_FORM_ENDPOINT = FORM_ENDPOINT;
 const SHOP_NOTIFY_ENDPOINT = FORM_ENDPOINT;
 const SPOTLIGHT_FORM_ENDPOINT = FORM_ENDPOINT;
+const CONTACT_FORM_ENDPOINT = FORM_ENDPOINT;
 
 function initLeadForm({ formId, statusId, endpoint, sendingLabel, idleLabel, successMessage }) {
   const form = document.getElementById(formId);
@@ -160,19 +162,20 @@ function initLeadForm({ formId, statusId, endpoint, sendingLabel, idleLabel, suc
     e.preventDefault();
     status.classList.remove('ok', 'err');
     const data = new FormData(form);
-    const placeholder = endpoint.includes('REPLACE_WITH');
 
     const submitBtn = form.querySelector('button[type="submit"]');
     submitBtn.setAttribute('aria-disabled', 'true');
     submitBtn.textContent = sendingLabel;
 
     try {
-      if (!placeholder) {
-        await fetch(endpoint, {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: data,
-        });
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok || result.success === false) {
+        throw new Error(result.message || 'Submission failed');
       }
       status.textContent = successMessage;
       status.classList.add('show', 'ok');
@@ -224,5 +227,14 @@ document.addEventListener('DOMContentLoaded', () => {
     idleLabel: 'Submit to Spotlight',
     successMessage:
       "Thanks! Your submission is in — we'll review it and let you know if it's shortlisted for a community vote.",
+  });
+
+  initLeadForm({
+    formId: 'contact-form',
+    statusId: 'contact-form-status',
+    endpoint: CONTACT_FORM_ENDPOINT,
+    sendingLabel: 'Sending…',
+    idleLabel: 'Send Message',
+    successMessage: "Thanks for reaching out — we'll get back to you soon.",
   });
 });

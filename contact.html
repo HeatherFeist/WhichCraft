@@ -44,6 +44,9 @@
 <section>
   <div class="wrap hero-grid">
     <form id="contact-form" class="form-card">
+      <input type="hidden" name="access_key" value="5947d8fb-3f28-4a79-b381-c81ef6eb2c88" />
+      <input type="hidden" name="subject" value="New Contact Form Message" />
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none;" />
       <div class="field">
         <label for="c-name">Full name</label>
         <input type="text" id="c-name" name="name" required />
@@ -67,9 +70,6 @@
       </div>
       <button type="submit" class="btn btn-primary btn-block">Send Message</button>
       <p id="contact-form-status" class="form-status" role="status"></p>
-      <div class="form-note">
-        This form needs a Formspree (or similar) endpoint added in <code>js/main.js</code> before it will deliver messages to an inbox — see the setup notes at the top of that file.
-      </div>
     </form>
 
     <div>
@@ -125,13 +125,5 @@
 </footer>
 
 <script src="js/main.js"></script>
-<script>
-  document.getElementById('contact-form')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const status = document.getElementById('contact-form-status');
-    status.textContent = 'Thanks for reaching out — add a form endpoint in js/main.js to enable delivery.';
-    status.classList.add('show', 'ok');
-  });
-</script>
 </body>
 </html>
