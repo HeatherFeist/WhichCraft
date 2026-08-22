@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Host a Party — WhichCraft</title>
+<meta name="description" content="Apply to host a WhichCraft craft party at your home and earn a free item from our marketplace." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand"><span class="mark">🧶</span> WhichCraft</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="travel.html">Travel Retreats</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="host.html">Host a Party</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="membership.html" class="btn btn-outline">Join Now</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Host a Party</span>
+    <h1>Open your home, bring the group together — and get a gift for it</h1>
+    <p class="lede">Just like the home parties you might remember growing up, WhichCraft members can apply to host a craft get-together in their own home (or a favorite local spot). Gather your friends, we'll bring the project and the teaching, and you'll walk away with a free item of your choice from our marketplace.</p>
+    <a href="#apply" class="btn btn-primary" style="margin-top:1em;">Apply to Host</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head center mx-auto">
+      <span class="eyebrow">How hosting works</span>
+      <h2>It's simple — and it's on us</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">🏡</div>
+        <h3>You Provide the Space</h3>
+        <p>Host in your home, backyard, or a local spot that fits your group — as few as 4 guests or as many as your space comfortably holds.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3>We Bring the Craft</h3>
+        <p>A teacher joins live (in person or by video) to guide your group through that month's project, with supplies arranged ahead of time.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎁</div>
+        <h3>You Choose Your Gift</h3>
+        <p>As a thank-you for hosting, you'll get to pick a free item from our marketplace — yours to keep, no purchase required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head center mx-auto">
+      <span class="eyebrow">What to expect</span>
+      <h2>From application to party day</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Apply below</h3>
+        <p>Tell us about your space, your group, and when you'd like to host — takes two minutes.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>We review &amp; confirm</h3>
+        <p>We'll follow up to lock in a date, confirm group size, and walk you through what to expect.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>We handle the details</h3>
+        <p>Supplies, project instructions, and your teacher (live or in person) are all arranged for you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Host, craft, and celebrate</h3>
+        <p>Enjoy the party, then pick your free marketplace item as our thank-you for opening your home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apply">
+  <div class="wrap">
+    <div class="section-head center mx-auto">
+      <span class="eyebrow">Apply to host</span>
+      <h2>Ready to open your home?</h2>
+      <p class="lede mx-auto">Fill out the form below and we'll be in touch to confirm details and pick a date that works for you.</p>
+    </div>
+
+    <form id="host-form" class="form-card" style="max-width:640px; margin:0 auto;">
+      <div class="field">
+        <label for="h-name">Full name</label>
+        <input type="text" id="h-name" name="name" required />
+      </div>
+      <div class="field">
+        <label for="h-email">Email address</label>
+        <input type="email" id="h-email" name="email" required />
+      </div>
+      <div class="field">
+        <label for="h-phone">Phone number</label>
+        <input type="tel" id="h-phone" name="phone" required />
+      </div>
+      <div class="field">
+        <label for="h-member">Are you currently a WhichCraft member?</label>
+        <select id="h-member" name="is_member">
+          <option value="yes">Yes, I'm a member</option>
+          <option value="no">Not yet, but I'd like to join</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="h-location">Where would you like to host?</label>
+        <input type="text" id="h-location" name="location" placeholder="City / neighborhood, and home or another space" required />
+      </div>
+      <div class="field">
+        <label for="h-size">Estimated group size</label>
+        <select id="h-size" name="group_size">
+          <option value="4-6">4–6 guests</option>
+          <option value="7-10" selected>7–10 guests</option>
+          <option value="11-15">11–15 guests</option>
+          <option value="16+">16+ guests</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="h-date">Preferred date or timeframe</label>
+        <input type="text" id="h-date" name="preferred_date" placeholder="e.g. a Saturday in October" />
+      </div>
+      <div class="field">
+        <label for="h-craft">Any craft you'd love your group to try? <span style="font-weight:400; color:#8a7b6e;">(optional)</span></label>
+        <textarea id="h-craft" name="craft_preference" placeholder="We'll do our best to match a project to your group's interests."></textarea>
+      </div>
+      <div class="field checkbox-row">
+        <input type="checkbox" id="h-terms" name="terms" required />
+        <label for="h-terms">I understand this is an application and hosting is confirmed after WhichCraft follows up with me.</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Submit Host Application</button>
+      <p id="host-form-status" class="form-status" role="status"></p>
+
+      <div class="form-note">
+        Submitting this form sends your application to our team for review — it doesn't confirm a date automatically. We'll follow up by email or phone to finalize details.
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap" style="max-width:780px; margin:0 auto;">
+    <div class="section-head center mx-auto">
+      <span class="eyebrow">Questions</span>
+      <h2>Hosting FAQ</h2>
+    </div>
+    <details class="faq-item" open>
+      <summary>Do I need to be a member to host?</summary>
+      <p>It helps, but it's not required — first-time hosts are welcome to apply, and it's a great way to try WhichCraft with friends before joining.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What does my free gift cost me?</summary>
+      <p>Nothing — choosing an item from our marketplace is our way of saying thank you for opening your home and bringing your group together.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do guests need to be members too?</summary>
+      <p>No, but they'll get a taste of what membership is like, and we'll make it easy for anyone who loves it to join afterward.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What if my group is smaller or bigger than the options listed?</summary>
+      <p>No problem — just note it in the craft preference field and we'll work with you on the right fit.</p>
+    </details>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:var(--cream);"><span class="mark">🧶</span> WhichCraft</a>
+        <p style="margin-top:14px; color:rgba(251,245,236,0.75); font-size:0.9rem;">A community connecting local crafters through live monthly sessions and unforgettable painting travel.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="travel.html">Travel Retreats</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="host.html">Host a Party</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="membership.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Along</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> WhichCraft. All rights reserved.</span>
+      <span>Made with care for makers everywhere.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -107,37 +107,49 @@ function initMembershipForm() {
 document.addEventListener('DOMContentLoaded', initMembershipForm);
 
 /**
- * Travel interest form — simple lead capture, same Formspree endpoint
- * (or set TRAVEL_FORM_ENDPOINT to a separate one if you'd rather keep
- * travel inquiries in their own inbox/folder).
+ * Simple lead-capture forms — travel interest, host applications, and
+ * shop launch notifications all follow the same pattern: submit to
+ * Formspree, show a success message, reset the form. Each currently
+ * shares FORM_ENDPOINT; give any of them their own endpoint below if
+ * you'd rather keep those inquiries in a separate inbox/folder.
+ *
+ * NOTE ON SUPABASE: once the "Host a Party" program and marketplace are
+ * ready for a real backend (tracking host applications/approvals, kit
+ * inventory, member listings, and sales data to decide which kits stay
+ * or get swapped out), these forms are the natural place to switch from
+ * Formspree to writing directly into Supabase tables. That swap needs
+ * your Supabase project URL and anon/public API key — once you have a
+ * project created, share those and this file can be updated to submit
+ * straight into Supabase instead of (or in addition to) Formspree.
  */
 const TRAVEL_FORM_ENDPOINT = FORM_ENDPOINT;
+const HOST_FORM_ENDPOINT = FORM_ENDPOINT;
+const SHOP_NOTIFY_ENDPOINT = FORM_ENDPOINT;
 
-function initTravelForm() {
-  const form = document.getElementById('travel-form');
+function initLeadForm({ formId, statusId, endpoint, sendingLabel, idleLabel, successMessage }) {
+  const form = document.getElementById(formId);
   if (!form) return;
-  const status = document.getElementById('travel-form-status');
+  const status = document.getElementById(statusId);
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     status.classList.remove('ok', 'err');
     const data = new FormData(form);
-    const placeholder = TRAVEL_FORM_ENDPOINT.includes('REPLACE_WITH');
+    const placeholder = endpoint.includes('REPLACE_WITH');
 
     const submitBtn = form.querySelector('button[type="submit"]');
     submitBtn.setAttribute('aria-disabled', 'true');
-    submitBtn.textContent = 'Sending…';
+    submitBtn.textContent = sendingLabel;
 
     try {
       if (!placeholder) {
-        await fetch(TRAVEL_FORM_ENDPOINT, {
+        await fetch(endpoint, {
           method: 'POST',
           headers: { Accept: 'application/json' },
           body: data,
         });
       }
-      status.textContent =
-        "Thank you! We'll be in touch with details on our next painting retreat.";
+      status.textContent = successMessage;
       status.classList.add('show', 'ok');
       form.reset();
     } catch (err) {
@@ -145,9 +157,37 @@ function initTravelForm() {
       status.classList.add('show', 'err');
     } finally {
       submitBtn.removeAttribute('aria-disabled');
-      submitBtn.textContent = 'Request Retreat Info';
+      submitBtn.textContent = idleLabel;
     }
   });
 }
 
-document.addEventListener('DOMContentLoaded', initTravelForm);
+document.addEventListener('DOMContentLoaded', () => {
+  initLeadForm({
+    formId: 'travel-form',
+    statusId: 'travel-form-status',
+    endpoint: TRAVEL_FORM_ENDPOINT,
+    sendingLabel: 'Sending…',
+    idleLabel: 'Request Retreat Info',
+    successMessage: "Thank you! We'll be in touch with details on our next painting retreat.",
+  });
+
+  initLeadForm({
+    formId: 'host-form',
+    statusId: 'host-form-status',
+    endpoint: HOST_FORM_ENDPOINT,
+    sendingLabel: 'Submitting…',
+    idleLabel: 'Submit Host Application',
+    successMessage:
+      "Thanks for applying to host! We'll review your application and follow up soon to confirm a date.",
+  });
+
+  initLeadForm({
+    formId: 'shop-notify-form',
+    statusId: 'shop-notify-status',
+    endpoint: SHOP_NOTIFY_ENDPOINT,
+    sendingLabel: 'Sending…',
+    idleLabel: 'Notify Me',
+    successMessage: "You're on the list! We'll email you the moment the shop opens.",
+  });
+});

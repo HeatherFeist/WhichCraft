@@ -11,8 +11,28 @@ This is a static site (plain HTML/CSS/JS) — no build step, no server required.
 | `index.html` | Home page — overview, plan teaser, testimonials |
 | `membership.html` | Full plan comparison **+ the signup form** |
 | `travel.html` | Group painting travel retreats, destinations, interest form |
-| `about.html` | Instructor bio / story |
+| `shop.html` | Marketplace preview (work-from-home kits + member listings) + launch notify form |
+| `host.html` | "Host a Party" application — apply to host a home craft party |
+| `about.html` | Meet the teachers (Heather & Linda) |
 | `contact.html` | General contact form |
+
+## The business model (for context)
+
+- **Membership**: monthly recurring fee, tiered (Spark/Circle/Studio), grants access to a live monthly craft/painting session plus community perks.
+- **Host a Party**: members apply to host a get-together at their home (or another space) — like a Tupperware party. WhichCraft supplies the teacher and project; the host picks a free item from the marketplace as a thank-you.
+- **Marketplace/Shop**: sells work-from-home kits for the crafts taught in live sessions, plus lets members list their own finished pieces for sale. Kits are chosen/rotated based on how well each project performs after being taught live — popular ones become official kits, slow sellers get swapped out.
+- **Livestreams**: weekly/possibly daily short-form content (TikTok, etc.) to build audience alongside the monthly deep-dive live session.
+- **Travel retreats**: members travel together to paint a destination live, a few times a year.
+
+## Planned backend: Supabase
+
+The `host.html` and `shop.html` forms currently submit as simple lead-capture (Formspree), same as the rest of the site. Once a **Supabase** project exists for this app, the natural next step is wiring these forms (and eventually membership, kit inventory, and marketplace listings/orders) directly into Supabase tables instead of/alongside Formspree — for things like:
+- Tracking host applications and approval status
+- Kit/product inventory and per-kit sales performance (to decide what to keep vs. swap out)
+- Member-submitted marketplace listings
+- Member accounts tied to their membership tier
+
+To wire this up, share the Supabase **project URL** and **anon/public API key** (found in Supabase → Project Settings → API) and the relevant tables/forms can be connected.
 
 ## What's already built
 
