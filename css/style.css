@@ -430,7 +430,9 @@ section { padding: 80px 0; }
   display: flex; align-items: center; justify-content: center;
   font-size: 2.6rem;
   color: rgba(255,255,255,0.9);
+  overflow: hidden;
 }
+.dest-photo img { width: 100%; height: 100%; object-fit: cover; }
 .dest-body { padding: 24px; }
 .dest-meta {
   display: flex;
